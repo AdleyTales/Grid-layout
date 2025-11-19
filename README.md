@@ -162,6 +162,111 @@ grid-template-columns: 100px 1fr 100px 1fr 100px 1fr;
 --- 
 
 精准控制布局
-网格线定位、span关键字、命名区域
+1、网格线定位 —— 像素级精准控制 
+2、span关键字 —— 动态跨域技术
+3、命名网格区域 —— 语义化布局方案
+
+### 基于网格线的精准定位
+核心属性
+
+```css
+.item {
+  /* 列方向定位 */
+  grid-column-start: 1;
+  grid-column-end: 3;
+
+  /* 行方向定位 */
+  grid-row-start: 2;
+  grid-row-end: 4;
+}
+```
+
+简洁写法：
+
+```css
+.item {
+  /* 列 */
+  grid-column: 1 / 3;
+
+  /* 行 */
+  grid-row: 2 / 4;
+}
+```
+
+负数索引技巧
+
+```css
+.item {
+  /* 从第一列延伸到最后一列 */
+  grid-column: 1 / -1;
+}
+```
+
+### 使用span关键字实现动态跨越
+有时我们不关心具体的结束位置，只关心要跨越多少个单元格
+
+基本语法
+```css
+.item-a {
+  grid-column: 2 / span 2;
+}
+
+.item-b {
+  grid-column: span 3;
+}
+```
+
+span的灵活性在响应式应用
+
+```css
+.responsive-item {
+  /* 在小屏幕上跨越2列 */
+  grid-column: span 2;
+}
+
+@media (min-width: 768px) {
+  /* 在大屏上跨越4列 */
+  grid-column: span 4;
+}
+```
+
+### 命名网格区域
+在响应式设计中优势
+
+grid-template-areas: xxx;
+
+justify-items: center;
+align-items: center | end;
+align-self: stretch;
+justify-self: center;
 
 
+## 总结
+
+1、轨道间距 gap 无边缘问题 替代传统的margin方案
+2、网络整体对齐 justify-content / align-content  (align-items: stretch;)
+3、单元格内项目对齐 justify-items/self align-items/self
+
+## 响应式网格与自动布局
+
+之前是media方案
+
+minmax() 函数 为轨道尺寸设定弹性便捷 （防止浪费空间 100px 小屏幕上压缩 1fr） min: 轨道的最小尺寸，保证内容的可读性 max：轨道的最大尺寸，通常用1fr等弹性单位
+
+```css
+.grid-container {
+  display: grid;
+  grid-template-columns: minmax(300px,1fr) minmax(300px,1fr); /* 小于600px 出现滚动条保证内容的可读性 大于600 1fr 1fr 占满屏幕两列 */
+} 
+```
+
+
+auto-fit vs auto fill 两种自动布局模式的区别 这两个关键字可以在空间内尽可能创建制定尺寸的轨道，但处理剩余空间的方式不同
+  auto-fill 保守填充
+  auto-fit  适应填充 *大多少场景
+
+```css
+grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+
+grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+```

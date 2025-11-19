@@ -5,15 +5,29 @@
 }
 
 .grid-container {
+  width: 1000px;
+  height: 600px;
   display: grid;
-  grid-template-columns: 200px 100px 200px;
-  grid-template-rows: 100px 100px;
+  grid-template-columns: repeat(2, 1fr);
   gap: 10px;
+  /* align-items: center; */
+  /* align-items: self-end; */
+  align-items: stretch;
 }
 
 .item {
-  background-color: #f0f0f0;
+  background-color: #81d32a;
   border: 1px solid #ccc;
+  /* padding: 20px; */
+  /* text-align: center; */
+  /* align-self: stretch; */
+  justify-content: center;
+  align-items: center;
+  display: flex;
   padding: 20px;
-  text-align: center;
+}
+
+.item.special {
+  align-self: stretch;
+  justify-self: center;
 }

@@ -1,0 +1,18 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+.grid-container {
+  display: grid;
+  grid-template-columns: minmax(300px,1fr) minmax(300px,1fr);
+  gap: 10px;
+}
+
+.item {
+  background-color: #efbaba;
+  border: 1px solid #ccc;
+  padding: 20px;
+  text-align: center;
+}
