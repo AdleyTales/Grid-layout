@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    * {
+      padding: 0;
+      margin: 0;
+    }
+
+    .container {
+      display: grid;
+      gap: 10px;
+      grid-template-columns: repeat(6, 1fr);
+      grid-auto-flow: dense; /* 关键：dense 自动填空 */
+      grid-auto-rows: 100px;
+    }
+
+    .container > div {
+      padding: 20px;
+      background-color: lightsalmon;
+    }
+
+    .item-5, .item-17, .item-42 {
+      grid-column: span 2;
+      grid-row: span 2;
+      background-color: lightseagreen !important;
+    }
+  </style>
+</head>
+
+<body>
+  <!-- <h3>
+  自动密排 + 手动指定重点项
+  有 100 张图片，正常自动密排（dense），但第 5、17、42 张图片必须跨 2 列 2 行（突出显示），其余自动填充空隙。
+  </h3> -->
+
+  <div class="container ">
+    
+  </div>
+
+  <script>
+    const container = document.querySelector('.container');
+
+    for (let i = 1; i <= 100; i++) {
+      const div = document.createElement('div');
+      div.innerText = `Item ${i}`;
+      div.classList.add('item-'+i);
+      container.appendChild(div);
+    }
+  </script>
+</body>
+
+</html>

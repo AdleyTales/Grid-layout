@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    * {
+      padding: 0;
+      margin: 0;
+    }
+
+    .container {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      grid-template-rows: repeat(3, 100px);
+      /* 显式只有3行 */
+      grid-auto-rows: 200px;
+      /* 隐式行高最小150px */
+      gap: 10px;
+    }
+
+    .container>div {
+      background-color: lightblue;
+      border: 1px solid #000;
+      text-align: center;
+      font-size: 24px;
+      /* padding: 20px 0; */
+    }
+
+    .container>div:nth-child(-n+12) {
+      background: #a2c613;
+      /* 显式行颜色 */
+    }
+  </style>
+</head>
+
+<body>
+  <!-- <h3>
+    显式网格 vs 隐式网格混合
+    容器只定义了 3 行 4 列的显式网格，但放了 20 个子项。
+    要求：显式网格区域每格高 100px，隐式网格自动创建的行高最小 150px，间距 10px。
+  </h3> -->
+
+  <div class="container">
+    <div>1</div>
+    <div>2</div>
+    <div>3</div>
+    <div>4</div>
+    <div>5</div>
+    <div>6</div>
+    <div>7</div>
+    <div>8</div>
+    <div>9</div>
+    <div>10</div>
+    <div>11</div>
+    <div>12</div>
+    <div>13</div>
+    <div>14</div>
+    <div>15</div>
+    <div>16</div>
+    <div>17</div>
+    <div>18</div>
+    <div>19</div>
+    <div>20</div>
+  </div>
+</body>
+
+</html>

@@ -265,8 +265,46 @@ auto-fit vs auto fill 两种自动布局模式的区别 这两个关键字可以
   auto-fill 保守填充
   auto-fit  适应填充 *大多少场景
 
+  99% 的响应式卡片布局都应该用 auto-fit，而不是 auto-fill。
+
 ```css
 grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
 
 grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
 ```
+
+repeat(auto-fit, minmax(250px, 1fr)) = 响应式、自适应、永远贴边、永远不小于250px的完美网格布局，现代前端开发中几乎是标配写法。
+
+minmax(250px, 1fr) 在 CSS Grid / Flex 中的详细解释
+它是 CSS 中 minmax() 函数的典型用法，常出现在 grid-template-columns 或 grid-auto-columns 中。
+
+250px最小值（硬约束）这条列在任何情况下宽度都不能小于 250px。即使容器很窄，也会强制至少 250px（可能导致溢出或换行）。1fr最大值（弹性约束）当容器还有剩余空间时，这条列可以弹性拉伸，和其他 fr 单位一起平分剩余空间。
+
+关键点总结：
+
+250px 是铁底：列永远不会比 250px 窄（除非容器本身比 250px 还窄，那就会溢出或被浏览器强制换行）。
+1fr 是弹性上限：空间多的时候，它会积极抢占地盘，和其他 fr 单位一起把容器塞得满满的，不留白。
+
+```css
+/* 手机优先，最小 280px（常见卡片宽度） */
+repeat(auto-fit, minmax(280px, 1fr))
+
+/* 更宽的卡片，比如后台管理面板 */
+repeat(auto-fit, minmax(350px, 1fr))
+
+/* 想限制最大宽度不至于太大（超大屏也不会太宽） */
+repeat(auto-fit, minmax(300px, 400px))   /* 最大400px */
+```
+
+一句话总结：
+minmax(250px, 1fr) = “至少给我250px宽，剩下的空间能分多少我拿多少” —— 这是实现完美响应式卡片网格的核心秘诀。
+
+---
+
+grid-auto-flow: dense; /* 关键：dense 自动填空 */
+grid-column: span 2;
+grid-row: span 2;
+grid-auto-rows: 100px;
+
+/* 关键！继承父网格轨道 */
+grid-template-columns: subgrid; 子网格不再是独立的网格，而是直接“借用”父网格的列宽和行高，实现完美的对齐。里面的子元素会直接使用父网格的 100px、1fr、200px 三条列轨道，完全自动对齐，再也不用重复写列宽！

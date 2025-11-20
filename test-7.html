@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    * {
+      padding: 0;
+      margin: 0;
+    }
+
+    .container {
+      display: grid;
+      gap: 10px;
+      grid-template-columns: 1fr 300px 1fr;
+      grid-template-rows: 1fr 300px 1fr;
+      height: 100vh;
+    }
+
+    .container>div {
+      padding: 20px;
+      background-color: lightsalmon;
+    }
+
+    .item2,
+    .item4 {
+      grid-column: 1 / -1;
+    }
+
+    .item1 {
+      grid-column: 1;
+      grid-row: 2;
+    }
+
+    .item3 {
+      grid-column: 3;
+      grid-row: 2;
+    }
+
+    .container .center {
+      grid-column: 2;
+      grid-row: 2;
+      background-color: rgb(47, 210, 41);
+      border-radius: 50%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+  </style>
+</head>
+
+<body>
+  <!-- <h3>
+  完美居中的仪表盘布局
+  实现下面这种圆形仪表盘布局（纯 Grid，不准用 Flex）
+  center 区域固定 300x300px，其余 4 个区域自动填充剩余空间且等大。
+
+        ┌───────┐
+    ┌───┤ item2 ├───┐
+    │   └───────┘   │
+  ┌─────┐         ┌─────┐
+  │item1│  center │item3│
+  └─────┘         └─────┘
+    │   ┌───────┐   │
+    └───┤  item4 ├───┘
+        └───────┘
+  </h3> -->
+
+  <div class="container ">
+    <div class="item1">item1</div>
+    <div class="item2">item2</div>
+    <div class="item3">item3</div>
+    <div class="item4">item4</div>
+    <div class="center">center</div>
+  </div>
+</body>
+
+</html>

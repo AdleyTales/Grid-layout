@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    * {
+      padding: 0;
+      margin: 0;
+    }
+
+    .container {
+      display: grid;
+      /* grid-template-columns: repeat(4, 1fr); */
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 10px;
+    }
+
+    .container > div {
+      background-color: lightskyblue;
+      padding: 20px 0;
+      text-align: center;
+    }
+  </style>
+</head>
+
+<body>
+  <!-- <h3>
+    卡片网格
+      实现类似 Pinterest 的响应式卡片布局：
+      桌面：每行 4 列
+      平板：每行 3 列
+      手机：每行 1 列
+      卡片高度不固定，但要尽量对齐（用 grid-auto-rows 配合 minmax）
+  </h3> -->
+
+  <div class="container">
+   <div>1</div>
+   <div>2</div>
+   <div>3</div>
+   <div>4</div>
+   <div>5</div>
+   <div>6</div>
+   <div>7</div>
+   <div>8</div>
+  </div>
+</body>
+
+</html>

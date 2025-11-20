@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    * {
+      padding: 0;
+      margin: 0;
+    }
+
+    .container {
+      display: grid;
+      grid-auto-flow: column; /* 关键：列方向流动 */
+      grid-auto-columns: 300px;
+      gap: 20px;
+      grid-template-rows: repeat(5, minmax(100px, auto)); /* 关键：列方向流动 */
+    }
+
+    .container>div {
+      padding: 20px;
+      background-color: lightsalmon;
+    }
+  </style>
+</head>
+
+<body>
+  <!-- <h3>
+  纯 Grid 实现类似 Masonry（瀑布流）但高度对齐底部
+  要求所有列底部对齐（不像传统瀑布流参差不齐），但每列内部项目垂直排列，用纯 Grid 实现（提示：grid-auto-flow: column + grid-auto-columns）
+  </h3> -->
+
+  <div class="container ">
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+  </div>
+</body>
+
+</html>
